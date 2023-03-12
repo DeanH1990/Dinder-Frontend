@@ -33,6 +33,9 @@ export const getAllRestaurantsByLocation = (postcode, preferences) => {
     })
     .then((response) => {
       return response.data;
+    })
+    .catch((err) => {
+      console.log(err)
     });
 };
 
