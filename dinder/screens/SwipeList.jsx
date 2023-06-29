@@ -11,6 +11,12 @@ export default function SwipeList({ setMaybePile, preferences, postcode }) {
   useEffect(() => {
     setIsLoading(true);
     getAllRestaurantsByLocation(postcode, preferences).then((response) => {
+      if (!response || !Array.isArray(response)) {
+        console.error('Unexpected response:', response);
+        alert("Please select more cuisines!")
+        return;
+      }
+
       response.forEach((restaurant) => {
         restaurant.image = imageData[restaurant.type];
       });
